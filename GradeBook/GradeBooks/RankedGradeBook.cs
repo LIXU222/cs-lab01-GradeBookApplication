@@ -18,17 +18,19 @@ namespace GradeBook.GradeBooks
             if (Students.Count < 5)
                 throw new InvalidOperationException("Ranked grading requires at least 5 students.");
 
-
-            if (averageGrade >= 80)
-                return 'A';
-            else if (averageGrade < 80 && averageGrade >= 60)
-                return 'B';
-            else if (averageGrade < 60 && averageGrade >= 40)
-                return 'C';
-            else if (averageGrade < 40 && averageGrade >= 20)
-                return 'D';
-            else
-                return 'F';
+            switch (averageGrade)
+            {
+                case double n when (n >= 80):
+                    return 'A';
+                case double n when (n >= 60):
+                    return 'B';
+                case double n when (n >= 40):
+                    return 'C';
+                case double n when (n >= 20):
+                    return 'D';
+                default:
+                    return 'F';
+            }
         }
 
         public override void CalculateStatistics()
